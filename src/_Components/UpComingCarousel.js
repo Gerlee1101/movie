@@ -8,22 +8,53 @@ import {
 } from "@/components/ui/carousel";
 import { CarouselCard } from "./CarouselCard";
 
+const cards = [
+  {
+    image: "/wicked.jpg",
+    name: "Wicked",
+    rating: "6.9",
+    info: "Elphaba, a misunderstood young woman because of her green skin, and Glinda, a popular girl, become friends at Shiz University in the Land of Oz. After an encounter with the Wonderful Wizard of Oz, their friendship reaches a crossroads. ",
+  },
+  {
+    image: "/gladiator.jpg",
+    name: "Gladiator II",
+    rating: "6.9",
+    info: "Elphaba, a misunderstood young woman because of her green skin, and Glinda, a popular girl, become friends at Shiz University in the Land of Oz. After an encounter with the Wonderful Wizard of Oz, their friendship reaches a crossroads. ",
+  },
+  {
+    image: "/Moana-2.png",
+    name: "Moana 2",
+    rating: "6.9",
+    info: "Elphaba, a misunderstood young woman because of her green skin, and Glinda, a popular girl, become friends at Shiz University in the Land of Oz. After an encounter with the Wonderful Wizard of Oz, their friendship reaches a crossroads. ",
+  },
+];
 export const UpComingCarousel = () => {
   return (
     <div className="w-screen mt-10 ">
-      <Carousel className="w-screen   max-w-full">
+      <Carousel className="w-screen b">
         <CarouselContent className="">
-          {Array.from({ length: 3 }).map((_, index) => (
-            <CarouselItem key={index} className=" flex gap-56">
-              <div className="">
-                <CarouselCard />
-              </div>
-            </CarouselItem>
-          ))}
+          {cards.map((item, index) => {
+            return (
+              <CarouselCard
+                image={item.image}
+                name={item.name}
+                rating={item.rating}
+                info={item.info}
+                key={index}
+              />
+            );
+          })}
         </CarouselContent>
         <CarouselPrevious className="left-10" />
         <CarouselNext className="right-10" />
       </Carousel>
+    </div>
+  );
+};
+export const CardButtons = () => {
+  return (
+    <div className="">
+      <Carousel items={cards} />
     </div>
   );
 };

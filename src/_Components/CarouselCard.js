@@ -1,14 +1,28 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { WatchButton } from "./WatchButton";
+import { Star } from "lucide-react";
+import { CarouselItem } from "@/components/ui/carousel";
 
-export const CarouselCard = () => {
+export const CarouselCard = (props) => {
   return (
-    <div className="w-screen border border-amber-300 ">
-      <Card className="w-">
-        <CardContent className="ml-20">
-          <img src={props.image} />
-          
-        </CardContent>
-      </Card>
-    </div>
+    <CarouselItem className="w-screen">
+      <img
+        className="w-full aspect-5/2 object-cover"
+        src={props.image}
+        alt="nowplayingimage"
+      />
+      <div className="absolute top-2/7 w-lg pl-35 text-white flex flex-col gap-5">
+        <div>
+          <p>Now playing:</p>
+          <p className="font-bold text-4xl">{props.name}</p>
+        </div>
+        <div className="flex">
+          <Star className="text-yellow-300" fill="#FDE047" />
+          <p>{props.rating} </p>
+          <p className="text-gray-400">/10</p>
+        </div>
+        <p className="w-[320px] h-20">{props.info}</p>
+        <WatchButton />
+      </div>
+    </CarouselItem>
   );
 };
