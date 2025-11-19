@@ -14,7 +14,7 @@ export default function Movie() {
     <>
       <Navigation />
 
-      <UpComingCarousel />
+      <UpComingCarousel/>
       <UpComingMovieListComponent />
       <PopularMovieListComponent/>
       <TopRatedListComponent/>
