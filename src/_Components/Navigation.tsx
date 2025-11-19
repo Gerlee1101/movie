@@ -9,7 +9,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@radix-ui/react-dropdown-menu";
-import { ChevronDownIcon, MoonIcon, SearchIcon } from "lucide-react";
+import { ChevronDownIcon, ChevronRight, MoonIcon, SearchIcon } from "lucide-react";
 
 export const Navigation = () => {
   return (
@@ -19,26 +19,27 @@ export const Navigation = () => {
           <div className="w-[92px] h-5 ">
             <img src="/Logo-Light mode.png" alt="logoMovie" />
           </div>
-          <div className="flex gap-2">
-            <DropdownMenu>
+          <div className="flex gap-2 z-10">
+            <DropdownMenu >
               <DropdownMenuTrigger asChild>
                 <Button variant="outline">
                   <ChevronDownIcon />
                   Genre
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56">
+              <DropdownMenuContent className=" w-fit border bg-white rounded-[6px] mt-1 ml-[470px] p-2.5">
                 <DropdownMenuLabel className="font-bold text-2xl">
                   Genres
                 </DropdownMenuLabel>
                 <DropdownMenuLabel>
                   See lists of movies by genre
                 </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuItem>
-                    <Button className="p-3"></Button>
-                  </DropdownMenuItem>
+                <DropdownMenuSeparator/>
+                <DropdownMenuGroup className="pt-10">
+                  <DropdownMenuItem className="w-[537px] gap-2 items-center">
+                    <Button variant= "default" className=" bg-white h-5 text-black border rounded-2xl"> Action <ChevronRight/></Button>  
+                    <DropdownMenuItem> <Button variant= "default" className=" bg-white h-5 text-black border rounded-2xl"> Adventure <ChevronRight/></Button></DropdownMenuItem>
+                </DropdownMenuItem>
                 </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>

@@ -13,7 +13,7 @@ export const UpComingMovieList = (props:UpcomingMovieListProps) => {
           <div className="">
             <img
               src={props.image}
-              className="rounded-t-[6px] h-[340px] w-full object-cover"
+              className="rounded-t-[6px] h-[340px] w-full object-center"
             />
           </div>
           <div className="pl-2">

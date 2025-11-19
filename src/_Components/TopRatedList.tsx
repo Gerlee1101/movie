@@ -1,11 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
-type PopularMovieListProps={
+type TopRatedListProps={
   image:string;
   rating:number;
   name:string;
 }
-export const PopularMovieList = (props:PopularMovieListProps) => {
+export const TopRatedList= (props:TopRatedListProps) => {
   return (
     <>
       <Card className="rounded-[6px] w-full flex flex-col py-0 bg-gray-200">

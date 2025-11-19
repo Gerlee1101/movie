@@ -59,7 +59,7 @@ export const UpComingMovieListComponent = () => {
   return (
     <>
       <div className="flex justify-between pr-20 pl-20 items-center pt-10 gap-8">
-        <h4 className="font-bold">Upcoming</h4>
+        <h4 className="font-bold text-2xl">Upcoming</h4>
         <div className="flex items-center gap-2">
           <Button variant="link">See more</Button>
           <ArrowRight size={16} />
