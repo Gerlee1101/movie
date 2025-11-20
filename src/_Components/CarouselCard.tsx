@@ -1,14 +1,14 @@
 import { WatchButton } from "./WatchButton";
 import { Star } from "lucide-react";
 import { CarouselItem } from "@/components/ui/carousel";
-type CarouselProps={
-  image:string;
-  name:string;
-  rating:number;
-  info:string;
-}
+type CarouselProps = {
+  image: string;
+  name: string;
+  rating: number;
+  info: string;
+};
 
-export const CarouselCard = (props:CarouselProps) => {
+export const CarouselCard = (props: CarouselProps) => {
   return (
     <CarouselItem className="w-screen">
       <img
@@ -23,7 +23,7 @@ export const CarouselCard = (props:CarouselProps) => {
         </div>
         <div className="flex">
           <Star className="text-yellow-300" fill="#FDE047" />
-          <p>{props.rating} </p>
+          <p>{props.rating}</p>
           <p className="text-gray-400">/10</p>
         </div>
         <p className="w-[320px] h-20">{props.info}</p>

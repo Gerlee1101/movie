@@ -8,7 +8,7 @@ type PopularMovieListProps={
 export const PopularMovieList = (props:PopularMovieListProps) => {
   return (
     <>
-      <Card className="rounded-[6px] w-full flex flex-col py-0 bg-gray-200">
+      <Card className="rounded-[6px] w-full flex flex-col py-0 bg-muted">
         <CardContent className="px-0  flex flex-col gap-4 ">
           <div className="">
             <img

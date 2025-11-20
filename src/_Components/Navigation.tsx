@@ -9,7 +9,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@radix-ui/react-dropdown-menu";
-import { ChevronDownIcon, ChevronRight, MoonIcon, SearchIcon } from "lucide-react";
+import {
+  ChevronDownIcon,
+  ChevronRight,
+  MoonIcon,
+  SearchIcon,
+} from "lucide-react";
+import { ModeToggle } from "./ModeToggle";
 
 export const Navigation = () => {
   return (
@@ -20,26 +26,97 @@ export const Navigation = () => {
             <img src="/Logo-Light mode.png" alt="logoMovie" />
           </div>
           <div className="flex gap-2 z-10">
-            <DropdownMenu >
+            <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline">
                   <ChevronDownIcon />
                   Genre
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className=" w-fit border bg-white rounded-[6px] mt-1 ml-[470px] p-2.5">
+              <DropdownMenuContent className=" w-fit border bg-muted rounded-[6px] mt-1 ml-[470px] p-2.5 flex flex-col gap-2">
                 <DropdownMenuLabel className="font-bold text-2xl">
                   Genres
                 </DropdownMenuLabel>
                 <DropdownMenuLabel>
                   See lists of movies by genre
                 </DropdownMenuLabel>
-                <DropdownMenuSeparator/>
-                <DropdownMenuGroup className="pt-10">
-                  <DropdownMenuItem className="w-[537px] gap-2 items-center">
-                    <Button variant= "default" className=" bg-white h-5 text-black border rounded-2xl"> Action <ChevronRight/></Button>  
-                    <DropdownMenuItem> <Button variant= "default" className=" bg-white h-5 text-black border rounded-2xl"> Adventure <ChevronRight/></Button></DropdownMenuItem>
-                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem className=" w-[537px] gap-3 flex flex-col items-center ">
+                    <DropdownMenuItem className="flex gap-4">
+                      <Button
+                        variant="default"
+                        className=" bg-muted h-5   border rounded-2xl hover:bg-gray-100 hover:text-black text-secondary-foreground"
+                      >
+                        Action <ChevronRight />
+                      </Button>
+                      <Button
+                        variant="default"
+                        className=" bg-white h-5 text-black border rounded-2xl hover:bg-gray-100"
+                      >
+                        {" "}
+                        Action <ChevronRight />
+                      </Button>
+                      <Button
+                        variant="default"
+                        className=" bg-white h-5 text-black border rounded-2xl hover:bg-gray-100"
+                      >
+                        {" "}
+                        Action <ChevronRight />
+                      </Button>
+                      <Button
+                        variant="default"
+                        className=" bg-white h-5 text-black border rounded-2xl hover:bg-gray-100"
+                      >
+                        {" "}
+                        Action <ChevronRight />
+                      </Button>
+                      <Button
+                        variant="default"
+                        className=" bg-white h-5 text-black border rounded-2xl hover:bg-gray-100"
+                      >
+                        {" "}
+                        Action <ChevronRight />
+                      </Button>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="flex gap-4">
+                      <Button
+                        variant="default"
+                        className=" bg-white h-5 text-black border rounded-2xl hover:bg-gray-100"
+                      >
+                        {" "}
+                        Action <ChevronRight />
+                      </Button>
+                      <Button
+                        variant="default"
+                        className=" bg-white h-5 text-black border rounded-2xl hover:bg-gray-100"
+                      >
+                        {" "}
+                        Action <ChevronRight />
+                      </Button>
+                      <Button
+                        variant="default"
+                        className=" bg-white h-5 text-black border rounded-2xl hover:bg-gray-100"
+                      >
+                        {" "}
+                        Action <ChevronRight />
+                      </Button>
+                      <Button
+                        variant="default"
+                        className=" bg-white h-5 text-black border rounded-2xl hover:bg-gray-100"
+                      >
+                        {" "}
+                        Action <ChevronRight />
+                      </Button>
+                      <Button
+                        variant="default"
+                        className=" bg-white h-5 text-black border rounded-2xl hover:bg-gray-100"
+                      >
+                        {" "}
+                        Action <ChevronRight />
+                      </Button>
+                    </DropdownMenuItem>
+                  </DropdownMenuItem>
                 </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -52,9 +129,7 @@ export const Navigation = () => {
               />
             </div>
           </div>
-          <div className="w-9 h-9 border rounded-md border-gray-300 place-items-center place-content-center ">
-            <MoonIcon className="w-3 h-3" />
-          </div>
+          <ModeToggle />
         </div>
       </div>
     </div>
