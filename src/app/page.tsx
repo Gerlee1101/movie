@@ -2,11 +2,11 @@ import { UpComingMovieListComponent } from "@/_Components/UpComingMovieListCompo
 import { Navigation } from "@/_Components/Navigation";
 import { UpComingCarousel } from "@/_Components/UpComingCarousel";
 
-import Image from "next/image";
 import { PopularMovieListComponent } from "@/_Components/PopularMovieListComponent";
 import { TopRatedListComponent } from "@/_Components/TopRatedListComponent";
 import { Footer } from "@/_Components/Footer";
-import { NavigationMenuComponent } from "@/_Components/NavigationMenuComponent";
+
+import { MovieSection } from "@/_Components/MovieSection";
 
 export default function Movie() {
   return (
@@ -15,8 +15,8 @@ export default function Movie() {
 
       <UpComingCarousel />
 
-      <UpComingMovieListComponent />
-
+      {/* <UpComingMovieListComponent /> */}
+      <MovieSection />
       <PopularMovieListComponent />
       <TopRatedListComponent />
       <Footer />

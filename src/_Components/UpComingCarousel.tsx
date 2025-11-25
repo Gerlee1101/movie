@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/carousel";
 import { CarouselCard } from "./CarouselCard";
 
-
 const cards = [
   {
     image: "/wicked.jpg",
