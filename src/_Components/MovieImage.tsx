@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 type MovieImageProps = {
-  backdrop_path?: string;
+  backdrop_path: string;
   title: string;
   className: string;
   loading?: boolean;
@@ -13,16 +13,11 @@ export const MovieImage = ({
   className,
   loading,
 }: MovieImageProps) => {
-  const imgUrl = `${process.env.TMDB_IMAGE_SERVICE_URL}/original${backdrop_path}`;
-  const img = backdrop_path ? imgUrl : "/image.png";
-
-  if (loading) return <>loaidng....</>;
-
   return (
     <Image
-      src={img}
-      width={500}
-      height={500}
+      src={backdrop_path}
+      width={400}
+      height={340}
       alt={title}
       className={className}
       style={{ objectFit: "cover" }}

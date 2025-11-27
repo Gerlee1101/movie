@@ -2,12 +2,11 @@ import { Star } from "lucide-react";
 import Link from "next/link";
 import { MovieImage } from "./MovieImage";
 
-
 type MovieCardProps = {
   id: number;
-  backdrop_path?: string;
+  backdrop_path: string;
   title: string;
-  vote_average: string;
+  vote_average: number;
   className?: string;
 };
 
@@ -19,7 +18,7 @@ export const MovieCard = ({
 }: MovieCardProps) => {
   return (
     <Link rel="preload" href={`/movie/${id}`}>
-      <div key={id} className="rounded-lg overflow-hidden">
+      <div key={id} className="rounded-lg overflow-hidden ">
         <MovieImage
           backdrop_path={backdrop_path}
           title={title}
@@ -33,7 +32,7 @@ export const MovieCard = ({
               <span className="text-xs text-muted-foreground">/10</span>
             </p>
           </div>
-          <p className="text-lg">{title}</p>
+          <p className="text-lg ">{title}</p>
         </div>
       </div>
     </Link>

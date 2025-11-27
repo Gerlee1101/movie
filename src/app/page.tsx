@@ -17,8 +17,8 @@ export default function Movie() {
 
       {/* <UpComingMovieListComponent /> */}
       <MovieSection />
-      <PopularMovieListComponent />
-      <TopRatedListComponent />
+      {/* <PopularMovieListComponent />
+      <TopRatedListComponent /> */}
       <Footer />
     </>
   );

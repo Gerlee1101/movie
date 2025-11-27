@@ -1,7 +1,8 @@
 import { env } from "process";
 import type { NextConfig } from "next";
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   //  env:{
@@ -10,6 +11,13 @@ const nextConfig = {
   //       TMDB_IMAGE_SERVICE_URL = process.env.TMDB_IMAGE_SERVICE_URL,
   //       TMDB_BASE_URL = process.env.TMDB_BASE_URL,
   //    },
+  images: {
+    remotePatterns: [
+      {
+        hostname: "*",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
