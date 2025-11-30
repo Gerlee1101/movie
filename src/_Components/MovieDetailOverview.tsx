@@ -6,21 +6,21 @@ import { Navigation } from "@/_Components/Navigation";
 import { Star } from "lucide-react";
 import { useParams } from "next/navigation";
 import { use, useEffect, useState } from "react";
-import React from "react";
-import ReactPlayer from "react-player";
+
 import { MovieDetailVideo } from "./MovieDetailVideo";
-import { MovieDetailOverview } from "./MovieDetailOverview";
-import { Separator } from "@radix-ui/react-dropdown-menu";
+import { MovieDetailInfo } from "./MovieDetailInfo";
+
 
 type Params = {
   movieId: string;
 };
 
-export const MovieDetailSection = () => {
+  
+export const MovieDetailOverview = () => {
   const { movieId } = useParams<Params>();
-    // const { categoryName, title, showButton } = props;
-  const [movie, setMovie] = useState<Movie>();
-  const [video, setVideo] = useState<string>("");
+  //   const { categoryName, title, showButton } = props;
+ const [movie, setMovie] = useState<Movie>();
+  // const [video, setVideo] = useState<string>("");
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
@@ -43,14 +43,12 @@ export const MovieDetailSection = () => {
       //     },
       //   }
       // );
-      // const data = await res.json();
+      const data = await res.json();
       // const videoData = await videoRes.json();
-      // console.log(data)
+      console.log(data)
       // console.log(videoData.results[0]?.key);
-  //     console.log(data);
-  //     setMovie(data);
-  //     // setVideo(videoData.results[0].key);
-     
+      setMovie(data);
+      // setVideo(videoData.results[0].key);  
     };
     fetchData();
   }, []);
@@ -61,24 +59,18 @@ export const MovieDetailSection = () => {
     return `${hours}h · ${minutes < 10 ? `0${minutes}` : minutes}m`;
   }
 
-  console.log(formatTime(60));
-
-
-
+  // console.log(formatTime(60));
   return (
     <div className="w-screen flex justify-center">
       <div className="flex flex-col gap-4 ">
-        
-
-
-        <div >
-          {/* <div className="text-2xl font-semibold ">
+        <div className="w-[1080px] flex justify-between mt-[50px]  ">
+          <div className="text-2xl font-semibold ">
             {movie?.title}
             <p className="text-[14px] font-normal">
               {movie?.release_date} · PG ·{formatTime(movie?.runtime || 0)}
             </p>
-          </div> */}
-          {/* <div className="flex flex-col">
+          </div>
+          <div className="flex flex-col">
             <p className="font-bold text-[12px]">Rating</p>
             <div className="flex gap-1 items-center ">
               <Star size={24} strokeWidth={0} fill="#FDE047" />
@@ -93,17 +85,20 @@ export const MovieDetailSection = () => {
                 </p>
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
         <div className="w-[1080px] flex justify-between ">
-           <MovieDetailOverview/>
-          {/* <img
+          <img
             src={`${"https://image.tmdb.org/t/p/w500/"}${movie?.poster_path}`}
             className="w-[290px] h-[428px] "
-          /> */}
+          /> 
+          <MovieDetailVideo/>
         </div>
-       
-
+        <div>
+          <div className="w-[1080px] text-muted-foreground">{movie?.overview}</div>
+        </div>
+        <MovieDetailInfo/>
+        
       </div>
     </div>
   );
