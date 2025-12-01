@@ -20,7 +20,6 @@ export const MovieDetailVideo = () => {
   const [video, setVideo] = useState<string>("");
   useEffect(() => {
     const fetchData = async () => {
-   
       const videoRes = await fetch(
         `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
         // `${process.env.TMDB_BASE_URL}/movie/${categoryName}?language=en-US&page=1`,
@@ -31,20 +30,21 @@ export const MovieDetailVideo = () => {
           },
         }
       );
-    //   const data = await res.json();
+      //   const data = await res.json();
       const videoData = await videoRes.json();
-    
-    //   console.log(videoData.results[0]?.key);
-    //   console.log(data);
-     
+
+      //   console.log(videoData.results[0]?.key);
+      //   console.log(data);
+
       setVideo(videoData.results[0].key);
     };
     fetchData();
   }, []);
-return( <ReactPlayer
-            src={`https://www.youtube.com/watch?v=${video}`}
-            width="780px"
-            height="428px"
-          />)
-
-  };
+  return (
+    <ReactPlayer
+      src={`https://www.youtube.com/watch?v=${video}`}
+      width="780px"
+      height="428px"
+    />
+  );
+};
