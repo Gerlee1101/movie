@@ -64,7 +64,7 @@ export const MovieDetailInfo = () => {
         .map((el: Cast) => el.name)
         .join(" · ");
 
-      const writers = res.crew.filter((el: Crew) => el.job === "Writer" && "");
+      const writers = res.crew.filter((el: Crew) => el.job === "Writer");
       const director = res.crew.filter((el: Crew) => el.job === "Director");
 
       setCredits({ stars: cast, writer: writers, director: director });
