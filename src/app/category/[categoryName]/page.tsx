@@ -2,6 +2,7 @@
 
 import { MovieSectionList } from "@/_Components/MovieSectionList";
 import { categories } from "@/_constants";
+
 import { useParams } from "next/navigation";
 import { title } from "node:process";
 

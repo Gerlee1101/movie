@@ -8,6 +8,13 @@ export type Movie = {
   original_language: string;
   original_title: string;
   id: number;
+  genres: [
+    {
+      id: number;
+      name: string;
+    }
+  ];
+  genre_ids: [];
   overview: string;
   popularity: number;
   poster_path: string;

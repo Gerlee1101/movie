@@ -36,8 +36,8 @@ type Params = {
 
 type Credits = {
   stars: string;
-  director: Crew[];
-  writer: Crew[];
+  director: string;
+  writer: string;
 };
 
 export const MovieDetailInfo = () => {
@@ -64,8 +64,15 @@ export const MovieDetailInfo = () => {
         .map((el: Cast) => el.name)
         .join(" · ");
 
-      const writers = res.crew.filter((el: Crew) => el.job === "Writer");
-      const director = res.crew.filter((el: Crew) => el.job === "Director");
+      const writers = res.crew
+        .filter((el: Crew) => el.department === "Writing")
+        .map((el: Crew) => el.name)
+        .join(" · ");
+
+      const director = res.crew
+        .filter((el: Crew) => el.job === "Director")
+        .map((el: Crew) => el.name)
+        .join(" · ");
 
       setCredits({ stars: cast, writer: writers, director: director });
     };
@@ -74,27 +81,19 @@ export const MovieDetailInfo = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="flex">
-        <p className="font-bold text-muted-foreground">Director</p>
-        <div className="flex pl-10">
-          {credit?.director.map((item, index) => {
-            return <p key={index}>{item.name}</p>;
-          })}
-        </div>
+    <div className="flex flex-col  gap-3">
+      <div className="flex ">
+        <p className="font-bold text-black">Director</p>
+        <div className="flex pl-10">{credit?.director}</div>
       </div>
       <Separator className="bg-gray-300 w-[1080px] h-px" />
       <div className="flex">
-        <p className="font-bold text-muted-foreground">Writer</p>
-        <div className="flex pl-14">
-          {credit?.writer.map((item, index) => {
-            return <p key={index}>{item.name}</p>;
-          })}
-        </div>
+        <p className="font-bold text-black">Writer</p>
+        <div className="flex pl-14">{credit?.writer}</div>
       </div>
       <Separator className="bg-gray-300 w-[1080px] h-px" />
       <div className="flex">
-        <p className="font-bold text-muted-foreground">Stars</p>
+        <p className="font-bold text-black">Stars</p>
         <div className="flex pl-14">{credit?.stars}</div>
       </div>
       <Separator className="bg-gray-300 w-[1080px] h-px" />

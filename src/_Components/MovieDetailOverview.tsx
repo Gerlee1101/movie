@@ -9,17 +9,17 @@ import { use, useEffect, useState } from "react";
 
 import { MovieDetailVideo } from "./MovieDetailVideo";
 import { MovieDetailInfo } from "./MovieDetailInfo";
-
+import { Badge } from "@/components/ui/badge";
+import { MoreLikeThis } from "./MoreLikeThis";
 
 type Params = {
   movieId: string;
 };
 
-  
 export const MovieDetailOverview = () => {
   const { movieId } = useParams<Params>();
   //   const { categoryName, title, showButton } = props;
- const [movie, setMovie] = useState<Movie>();
+  const [movie, setMovie] = useState<Movie>();
   // const [video, setVideo] = useState<string>("");
   useEffect(() => {
     const fetchData = async () => {
@@ -45,14 +45,14 @@ export const MovieDetailOverview = () => {
       // );
       const data = await res.json();
       // const videoData = await videoRes.json();
-      console.log(data)
+      // console.log(data);
       // console.log(videoData.results[0]?.key);
       setMovie(data);
-      // setVideo(videoData.results[0].key);  
+      // setVideo(videoData.results[0].key);
     };
     fetchData();
   }, []);
- 
+
   function formatTime(min: number) {
     const hours = Math.floor(min / 60);
     const minutes = min % 60;
@@ -91,14 +91,22 @@ export const MovieDetailOverview = () => {
           <img
             src={`${"https://image.tmdb.org/t/p/w500/"}${movie?.poster_path}`}
             className="w-[290px] h-[428px] "
-          /> 
-          <MovieDetailVideo/>
+          />
+          <MovieDetailVideo />
         </div>
-        <div>
-          <div className="w-[1080px] text-muted-foreground">{movie?.overview}</div>
+        <div className="flex gap-2 pt-5">
+          {movie?.genres.map((el) => {
+            return (
+              <Badge variant="outline" key={el.id}>
+                {el.name}
+              </Badge>
+            );
+          })}
         </div>
-        <MovieDetailInfo/>
-        
+        <div className="w-[1080px] text-black">{movie?.overview}</div>
+
+        <MovieDetailInfo />
+        <MoreLikeThis />
       </div>
     </div>
   );
