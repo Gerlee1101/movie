@@ -117,9 +117,10 @@ export const MovieSectionList = (props: MovieSectionProps) => {
                   Previous <ChevronLeft />
                 </Button>
               </PaginationItem>
-              <PaginationItem>
+              {currentPage-1>2 &&( <PaginationItem>
                 <PaginationEllipsis />
-              </PaginationItem>
+              </PaginationItem>)}
+             
               {currentPage > 1 && (
                 <PaginationItem>
                   <Button variant="outline" onClick={prevPage}>
@@ -130,16 +131,25 @@ export const MovieSectionList = (props: MovieSectionProps) => {
 
               <PaginationItem>
                 <Button variant="default">{currentPage}</Button>
-              </PaginationItem>
-
-              <PaginationItem>
+              </PaginationItem>   
+              { currentPage+1<totalPages &&(<PaginationItem>
                 <Button variant="outline" onClick={nextPage}>
                   {currentPage + 1}
                 </Button>
-              </PaginationItem>
-              <PaginationItem>
+              </PaginationItem>)}
+              {currentPage+1>totalPages||currentPage>3 &&( <PaginationItem>
                 <PaginationEllipsis />
-              </PaginationItem>
+              </PaginationItem>)}
+           { currentPage + 1 < 5 ||currentPage<totalPages-1 && (<PaginationItem>
+                <Button
+                  variant="outline"
+                  
+                >
+                  {totalPages} 
+                </Button>
+              </PaginationItem>)}
+             
+               
               <PaginationItem>
                 <Button
                   variant="outline"

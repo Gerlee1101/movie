@@ -83,17 +83,17 @@ export const MovieDetailInfo = () => {
   return (
     <div className="flex flex-col  gap-3">
       <div className="flex ">
-        <p className="font-bold text-black">Director</p>
+        <p className="font-bold text-muted-foreground">Director</p>
         <div className="flex pl-10">{credit?.director}</div>
       </div>
       <Separator className="bg-gray-300 w-[1080px] h-px" />
       <div className="flex">
-        <p className="font-bold text-black">Writer</p>
+        <p className="font-bold text-muted-foreground">Writer</p>
         <div className="flex pl-14">{credit?.writer}</div>
       </div>
       <Separator className="bg-gray-300 w-[1080px] h-px" />
       <div className="flex">
-        <p className="font-bold text-black">Stars</p>
+        <p className="font-bold text-muted-foreground">Stars</p>
         <div className="flex pl-14">{credit?.stars}</div>
       </div>
       <Separator className="bg-gray-300 w-[1080px] h-px" />
