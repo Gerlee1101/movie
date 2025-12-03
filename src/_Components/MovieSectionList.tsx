@@ -2,6 +2,14 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { MovieCard } from "./MovieCard";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+} from "@/components/ui/pagination";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 export type Movie = {
   adult: boolean;
   backdrop_path: string;
@@ -24,11 +32,13 @@ export type Movie = {
   vote_average: number;
   vote_count: number;
   runtime: number;
+  showButton: boolean;
 };
 type MovieSectionProps = {
   categoryName: string;
   title: string;
   showButton: boolean;
+  showPagination: boolean;
 };
 type Response = {
   page: number;
@@ -39,12 +49,14 @@ type Response = {
 
 export const MovieSectionList = (props: MovieSectionProps) => {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const { categoryName, title, showButton } = props;
+  const { categoryName, title, showButton, showPagination } = props;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${categoryName}?language=en-US&page=1`,
+        `https://api.themoviedb.org/3/movie/${categoryName}?language=en-US&page=${currentPage}`,
         // `${process.env.TMDB_BASE_URL}/movie/${categoryName}?language=en-US&page=1`,
         {
           headers: {
@@ -54,11 +66,18 @@ export const MovieSectionList = (props: MovieSectionProps) => {
         }
       );
       const data = (await res.json()) as Response;
-
       setMovies(data.results);
+      setTotalPages(data.total_pages);
     };
     fetchData();
-  }, []);
+  }, [categoryName, currentPage]);
+
+  const nextPage = () => {
+    setCurrentPage((prev) => prev + 1);
+  };
+  const prevPage = () => {
+    setCurrentPage((prev) => prev - 1);
+  };
 
   return (
     <div>
@@ -84,6 +103,55 @@ export const MovieSectionList = (props: MovieSectionProps) => {
             />
           );
         })}
+      </div>
+      <div className=" pr-20 pl-20 pt-5 pb-5 ">
+        {showPagination && (
+          <Pagination className="flex justify-end ">
+            <PaginationContent>
+              <PaginationItem>
+                <Button
+                  variant="outline"
+                  onClick={prevPage}
+                  disabled={currentPage === 1}
+                >
+                  Previous <ChevronLeft />
+                </Button>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+              {currentPage > 1 && (
+                <PaginationItem>
+                  <Button variant="outline" onClick={prevPage}>
+                    {currentPage - 1}
+                  </Button>
+                </PaginationItem>
+              )}
+
+              <PaginationItem>
+                <Button variant="default">{currentPage}</Button>
+              </PaginationItem>
+
+              <PaginationItem>
+                <Button variant="outline" onClick={nextPage}>
+                  {currentPage + 1}
+                </Button>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+              <PaginationItem>
+                <Button
+                  variant="outline"
+                  onClick={nextPage}
+                  disabled={currentPage === totalPages}
+                >
+                  Next <ChevronRight />
+                </Button>
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        )}
       </div>
     </div>
   );

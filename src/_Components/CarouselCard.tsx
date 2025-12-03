@@ -16,7 +16,7 @@ export const CarouselCard = (props: CarouselProps) => {
         src={props.image}
         alt="nowplayingimage"
       />
-      <div className="absolute top-2/7 w-lg pl-35 text-white flex flex-col gap-5">
+      <div className=" absolute top-2/7 w-lg pl-35 text-white flex flex-col gap-5">
         <div>
           <p>Now playing:</p>
           <p className="font-bold text-4xl">{props.name}</p>

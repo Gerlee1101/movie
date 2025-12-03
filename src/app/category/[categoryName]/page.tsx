@@ -21,6 +21,7 @@ const CategorySectionDetail = () => {
         categoryName={categoryName}
         title={title || ""}
         showButton={false}
+        showPagination={true}
       />
     </div>
   );

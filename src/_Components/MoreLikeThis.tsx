@@ -7,9 +7,15 @@ import Link from "next/link";
 type Params = {
   movieId: string;
 };
+type MovieSectionProps = {
+  categoryName: string;
+  title: string;
+  showButton: boolean;
+};
 export const MoreLikeThis = () => {
   const { movieId } = useParams<Params>();
   const [moreVideo, setMoreVideo] = useState<Movie[]>([]);
+  // const { genre_ids, title, showButton } = props;
   useEffect(() => {
     const fetchData = async () => {
       const morelikeRes = await fetch(
@@ -31,9 +37,14 @@ export const MoreLikeThis = () => {
 
   return (
     <div>
-      <div className="flex justify-between">
-        <div className="font-extrabold text-2xl">More like this</div>
-        <div>see more</div>
+      <div className="flex justify-between ">
+        <p className="text-2xl font-semibold ">More like this</p>
+        <p>see more</p>
+        {/* {showButton && (
+          <Link href={`/category/${categoryName}`}>
+            <p>see more</p>
+          </Link>
+        )} */}
       </div>
       <div className="grid grid-cols-5 gap-8 pt-10 pb-20">
         {moreVideo.slice(0, 5).map((el) => {
