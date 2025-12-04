@@ -16,12 +16,12 @@ type Params = {
 export const MovieDetailVideo = () => {
   const { movieId } = useParams<Params>();
   //   const { categoryName, title, showButton } = props;
-  const [movie, setMovie] = useState<Movie>();
+  // const [movie, setMovie] = useState<Movie>();
   const [video, setVideo] = useState<string>("");
   useEffect(() => {
     const fetchData = async () => {
       const videoRes = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
+        `https://api.themoviedb.org/3/movie/${movieId}/videos?langua. ge=en-US`,
         // `${process.env.TMDB_BASE_URL}/movie/${categoryName}?language=en-US&page=1`,
         {
           headers: {
@@ -30,11 +30,10 @@ export const MovieDetailVideo = () => {
           },
         }
       );
-      //   const data = await res.json();
+
       const videoData = await videoRes.json();
 
       //   console.log(videoData.results[0]?.key);
-      //   console.log(data);
 
       setVideo(videoData.results[0].key);
     };

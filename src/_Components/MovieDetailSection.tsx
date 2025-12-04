@@ -18,7 +18,7 @@ type Params = {
 
 export const MovieDetailSection = () => {
   const { movieId } = useParams<Params>();
-    // const { categoryName, title, showButton } = props;
+  // const { categoryName, title, showButton } = props;
   const [movie, setMovie] = useState<Movie>();
   const [video, setVideo] = useState<string>("");
   useEffect(() => {
@@ -47,14 +47,13 @@ export const MovieDetailSection = () => {
       // const videoData = await videoRes.json();
       // console.log(data)
       // console.log(videoData.results[0]?.key);
-  //     console.log(data);
-  //     setMovie(data);
-  //     // setVideo(videoData.results[0].key);
-     
+      //     console.log(data);
+      //     setMovie(data);
+      //     // setVideo(videoData.results[0].key);
     };
     fetchData();
   }, []);
- 
+
   function formatTime(min: number) {
     const hours = Math.floor(min / 60);
     const minutes = min % 60;
@@ -63,47 +62,13 @@ export const MovieDetailSection = () => {
 
   console.log(formatTime(60));
 
-
-
   return (
     <div className="w-screen flex justify-center">
       <div className="flex flex-col gap-4 ">
-        
-
-
-        <div >
-          {/* <div className="text-2xl font-semibold ">
-            {movie?.title}
-            <p className="text-[14px] font-normal">
-              {movie?.release_date} · PG ·{formatTime(movie?.runtime || 0)}
-            </p>
-          </div> */}
-          {/* <div className="flex flex-col">
-            <p className="font-bold text-[12px]">Rating</p>
-            <div className="flex gap-1 items-center ">
-              <Star size={24} strokeWidth={0} fill="#FDE047" />
-              <div className="flex flex-col">
-                <p className="text-sm pb-1 font-bold">
-                  {movie?.vote_average}{" "}
-                  <span className="text-xs text-muted-foreground">/10</span>{" "}
-                </p>
-                <p className="text-[10px] align-text-top text-muted-foreground">
-                  {" "}
-                  {movie?.vote_count}
-                </p>
-              </div>
-            </div>
-          </div> */}
-        </div>
+        <div></div>
         <div className="w-[1080px] flex justify-between ">
-           <MovieDetailOverview/>
-          {/* <img
-            src={`${"https://image.tmdb.org/t/p/w500/"}${movie?.poster_path}`}
-            className="w-[290px] h-[428px] "
-          /> */}
+          <MovieDetailOverview />
         </div>
-       
-
       </div>
     </div>
   );

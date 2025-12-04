@@ -63,7 +63,7 @@ export const MovieDetailOverview = () => {
   return (
     <div className="w-screen flex justify-center">
       <div className="flex flex-col gap-4 ">
-        <div className="w-[1080px] flex justify-between mt-[50px]  ">
+        <div className="w-full flex justify-between mt-[50px]  ">
           <div className="text-2xl font-semibold ">
             {movie?.title}
             <p className="text-[14px] font-normal">
@@ -87,7 +87,7 @@ export const MovieDetailOverview = () => {
             </div>
           </div>
         </div>
-        <div className="w-[1080px] flex justify-between ">
+        <div className="w-fit gap-2 flex justify-between ">
           <img
             src={`${"https://image.tmdb.org/t/p/w500/"}${movie?.poster_path}`}
             className="w-[290px] h-[428px] "

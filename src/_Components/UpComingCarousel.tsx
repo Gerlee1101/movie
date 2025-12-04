@@ -31,36 +31,38 @@ import { Movie } from "./MovieSectionList";
 //   },
 // ];
 export const UpComingCarousel = () => {
-  const[slides, setSlides]=useState<Movie[]>([])
-  useEffect(()=>{
-    const fetchData= async()=>{
-      const res=await fetch(
+  const [slides, setSlides] = useState<Movie[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(
         `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1'`,
-      {
-    headers: {
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZTA5ZWJjYjRkNjZiM2NkNWM3Mjg3OGYyNWZhMjc3OCIsIm5iZiI6MTc2MzU0NzUwNi41MjMsInN1YiI6IjY5MWQ5OTcyMzMwMzUyZWI1MTJkNDMwZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.HrXmCirix39iPdFjJ9ayIrWn-n-oJ2aRHVfqfXa6ilw`,
-     accept: "application/json",
-    },
-     
-      }
-    );
-    const data=(await res.json());
-    setSlides(data);
-    console.log(data)
+        {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZTA5ZWJjYjRkNjZiM2NkNWM3Mjg3OGYyNWZhMjc3OCIsIm5iZiI6MTc2MzU0NzUwNi41MjMsInN1YiI6IjY5MWQ5OTcyMzMwMzUyZWI1MTJkNDMwZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.HrXmCirix39iPdFjJ9ayIrWn-n-oJ2aRHVfqfXa6ilw`,
+            accept: "application/json",
+          },
+        }
+      );
+      const data = await res.json();
+      setSlides(data.results);
+      // console.log(data.results);
     };
-  fetchData();
-  },[])
+    fetchData();
+  }, []);
   return (
     <div className="w-screen mt-10 ">
       <Carousel className="w-screen">
         <CarouselContent className="">
-          {slides.map((el) => {
+          {slides?.map((el) => {
             return (
               <CarouselCard
-                backdrop_path={"https://image.tmdb.org/t/p/original/"+el.poster_path}
+                backdrop_path={
+                  "https://image.tmdb.org/t/p/original/" + el.poster_path
+                }
                 title={el.title}
                 vote_average={el.vote_average}
                 overview={el.overview}
+                id={el.id}
                 key={el.id}
               />
             );

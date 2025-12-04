@@ -19,6 +19,7 @@ import {
 import { ModeToggle } from "./ModeToggle";
 
 import { useEffect, useState } from "react";
+import { Badge } from "@/components/ui/badge";
 export type GenreList = {
   id: number;
   name: string;
@@ -68,7 +69,7 @@ export const Navigation = () => {
                   Genre
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className=" w-[577px] border bg-muted rounded-[6px] mt-1 ml-[490px] p-2.5 flex flex-col gap-2">
+              <DropdownMenuContent className=" w-[520px] border bg-muted rounded-[6px] mt-1 ml-[490px] pl-4 pr-4 flex flex-col gap-5">
                 <DropdownMenuLabel className="font-bold text-2xl">
                   Genres
                 </DropdownMenuLabel>
@@ -76,21 +77,22 @@ export const Navigation = () => {
                   See lists of movies by genre
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator className="border" />
-                <DropdownMenuGroup>
-                  <DropdownMenuItem className="w-fit grid grid-cols-5 gap-4 ">
+                <DropdownMenuGroup className="flex flex-col pb-5 ">
+                  <div className="w-full">
                     {movies.map((item, index) => {
                       return (
-                        <Button
-                          variant="default"
-                          className=" bg-white h-5 w-auto wrap-anywhere pr-2 pl-2  text-black border rounded-2xl hover:bg-gray-100"
+                        <Badge
+                          variant="secondary"
+                          className=" bg-white  w-auto  px-2 py-0 text-black border rounded-2xl hover:bg-gray-100 [a&]:hover:bg-secondary/30 "
                           key={index}
                         >
                           {item.name}
-                          <ChevronRight />
-                        </Button>
+
+                          <ChevronRight className="ml-1" />
+                        </Badge>
                       );
                     })}
-                  </DropdownMenuItem>
+                  </div>
                 </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>

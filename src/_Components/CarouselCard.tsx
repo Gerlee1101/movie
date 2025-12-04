@@ -2,15 +2,15 @@ import { WatchButton } from "./WatchButton";
 import { Star } from "lucide-react";
 import { CarouselItem } from "@/components/ui/carousel";
 import { Movie } from "./MovieSectionList";
-// type CarouselProps = {
-//   image: string;
-//   name: string;
-//   rating: number;
-//   info: string;
+export type CarouselProps = {
+  backdrop_path: string;
+  title: string;
+  vote_average: number;
+  overview: string;
+  id: number;
+};
 
-// };
-
-export const CarouselCard = (props: Movie) => {
+export const CarouselCard = (props: CarouselProps) => {
   return (
     <CarouselItem className="w-screen">
       <img
@@ -28,10 +28,21 @@ export const CarouselCard = (props: Movie) => {
           <p>{props.vote_average}</p>
           <p className="text-gray-400">/10</p>
         </div>
-        <div className="w-fit"> <p className="w-[400px] h-20">{props.overview}</p></div>
-       
-        <div className="pt-10"> <WatchButton /></div>
-       
+        <div className="w-fit">
+          <div>
+            <p className="w-[400px]">{props.overview}</p>
+          </div>
+
+          <div className="pt-2">
+            <WatchButton
+              backdrop_path={props.backdrop_path}
+              title={props.title}
+              vote_average={props.vote_average}
+              overview={props.overview}
+              id={props.id}
+            />
+          </div>
+        </div>
       </div>
     </CarouselItem>
   );

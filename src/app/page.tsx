@@ -11,15 +11,8 @@ import { MovieSection } from "@/_Components/MovieSection";
 export default function Movie() {
   return (
     <>
-      <Navigation />
-
       <UpComingCarousel />
-
-      {/* <UpComingMovieListComponent /> */}
       <MovieSection />
-      {/* <PopularMovieListComponent />
-      <TopRatedListComponent /> */}
-      <Footer />
     </>
   );
 }
