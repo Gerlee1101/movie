@@ -20,6 +20,7 @@ import { ModeToggle } from "./ModeToggle";
 
 import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { useSearchParams } from "next/navigation";
 export type GenreList = {
   id: number;
   name: string;
@@ -28,8 +29,13 @@ type GenreResponse = {
   genres: GenreList[];
 };
 export const Navigation = () => {
-  const [movies, setMovies] = useState<GenreList[]>([]);
-
+  const [genres, setGenres] = useState<GenreList[]>([]);
+  const searchParams = useSearchParams();
+  const genreIds=searchParams.get(`genre_ids`)
+  console.log(genreIds);
+const handleClickGenre=(genreId:number)=>{
+  console.log(genreId);
+}
   useEffect(() => {
     const getData = async () => {
       try {
@@ -46,7 +52,7 @@ export const Navigation = () => {
         );
 
         const data = (await res.json()) as GenreResponse;
-        setMovies(data.genres);
+        setGenres(data.genres);
       } catch (error) {
         console.log(error);
       }
@@ -78,8 +84,8 @@ export const Navigation = () => {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator className="border" />
                 <DropdownMenuGroup className="flex flex-col pb-5 ">
-                  <div className="w-full">
-                    {movies.map((item, index) => {
+                  <div className="w-full flex flex-wrap gap-4 ">
+                    {genres.map((item, index) => {
                       return (
                         <Badge
                           variant="secondary"

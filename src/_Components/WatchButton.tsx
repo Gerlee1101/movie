@@ -53,7 +53,7 @@ export const WatchButton = (props: CarouselProps) => {
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[991px] h-[561px] rounded-none ">
-          <DialogTitle>
+         <DialogTitle>
             <ReactPlayer
               src={`https://www.youtube.com/watch?v=${video}`}
               width="992px"
