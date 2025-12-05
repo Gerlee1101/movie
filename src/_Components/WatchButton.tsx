@@ -33,7 +33,7 @@ export const WatchButton = (props: CarouselProps) => {
       //
       const videoData = await videoRes.json();
 
-      console.log(videoData.results[0].key);
+      // console.log(videoData.results[0].key);
       //   console.log(data);
 
       setVideo(videoData.results[0].key);
@@ -53,7 +53,7 @@ export const WatchButton = (props: CarouselProps) => {
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[991px] h-[561px] rounded-none ">
-         <DialogTitle>
+          <DialogTitle>
             <ReactPlayer
               src={`https://www.youtube.com/watch?v=${video}`}
               width="992px"
